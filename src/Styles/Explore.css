@@ -1,0 +1,174 @@
+.explore{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: fit-content;
+    gap: 8px;
+    padding: 8px;
+}
+
+.service-card{
+    background: #cacaca;
+    padding: 14px;
+    width: 280px;
+    position: relative;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.service-card .call{
+    background: #1db954;
+    width: 100px;
+    align-items: center;
+    padding: px;
+    justify-content: center;
+    display: flex;
+    font-size: 1.4em;
+    text-decoration: none;
+    color: white;
+    width: 280px;
+    transition: all 0.3s ease;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.call:hover{background: #0f913c;}
+
+.call:hover img{transform: translateY(-4px); transition: all 0.3s ease;}
+
+.call img{height: 24px;}
+
+.dots{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 2px;
+    margin-top: 2px;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.dots:hover{
+    background: #8f8d8d;
+}
+
+.dots span{
+    padding: 2px;
+    border-radius: 8px;
+    background: #333;
+}
+
+.context-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    background: #111;
+    padding: 8px;
+    
+    border-radius: 8px;
+    right: 6px;
+    
+    gap: 2px;
+    animation: slide 0.3s ease;
+    z-index: 1;
+}
+
+@keyframes slide{
+    from{opacity: 0; transform: translateY(-10px);}
+    to{opacity: 1; transform: translateY(0px);}
+}
+
+.context-menu button{
+    padding: 4px;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #333;
+    color: white;
+    font-family: inherit;
+}
+
+.context-menu button:hover{
+    background: #424242;
+}
+
+.service-card h2{color: #1d1d1d;}
+
+@media (max-width: 900px){
+    .explore{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 568px){
+    .explore{grid-template-columns: repeat(1, 1fr);
+    margin-left: 20vw;}
+}
+
+.report{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #cacaca;
+    padding: 24px;
+    position: relative;
+    border-radius: 8px;
+    gap: 4px;
+    animation: slide 0.3s ease;
+}
+
+.report button{background: #0f913c;}
+
+.report form img{
+    background: #9c9c9c;
+    border-radius: 24px;
+    position: absolute;
+    top: 4px;
+    cursor: pointer;
+    right: 4px;
+    transition: all 0.3s ease;
+}
+
+.report img:hover{background: #333;}
+
+.report form textarea{
+    height: 80px;
+    width: 300px;
+    font-family: inherit;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.report form textarea:focus{
+    outline: none;
+    border-color: #0f913c;
+}

@@ -2,10 +2,33 @@ import { useState } from 'react';
 import service from '../images/service.svg'
 
 
+
 const days = ["None","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const categories = ["None","Construction", "Woodwork", "Farming", "Home Decor", "Digital Services", "House Work"
 ]
-export default function AddService(){
+
+const isDoneClass = {
+    background: '#049637',
+    padding: '8px',
+    width: '300px',
+    border:' 2px solid green',
+    borderRadius: '4px',
+    animation:' enter 0.3s ease',
+    color: 'white'
+}
+
+const isNoteDone = {
+    background: '#c50505dc',
+    padding: '8px',
+    width: '300px',
+    border:' 2px solid red',
+    borderRadius: '4px',
+    animation:' enter 0.3s ease',
+    color: 'white'
+}
+
+
+export default function AddService({setServices}){
     const [category, setCategory] = useState('')
     const [serviceName, setServiceName] = useState('')
     const [location, setLocation] = useState('')
@@ -13,6 +36,7 @@ export default function AddService(){
     const [daysFrom, setDaysFrom] = useState('')
     const [daysTo, setDaysTo] = useState('')
     const [note, setNote] = useState('')
+    const [isDone, setIsDone] = useState(false)
 
     function showNote(words){
         setNote(words)
@@ -23,9 +47,33 @@ export default function AddService(){
     }
 
     function handleAdditionOfServices(){
-       if(category === 'None')showNote('Select a category');
-       if(serviceName === '')showNote('Add service name');
-       if(location === '')showNote('Add a location');
+       if(category === '')showNote('Select a category');
+       else if(serviceName === '')showNote('Add service name');
+       else if(location === '')showNote('Add a location');
+       else if(contact === '')showNote('Add your contact')
+       else if(daysFrom === '')showNote('Add days available');
+       else if(daysTo === '')showNote('Add days available')
+        else{
+
+            
+            const newService = {
+                name: serviceName,
+                location: location,
+                category: category,
+                contact: contact,
+                days: `${daysFrom} - ${daysTo}`
+            }
+
+            setServices(prev => [...prev, newService])
+            setCategory('');
+            setContact('')
+            setDaysFrom('')
+            setDaysTo('')
+            setLocation('')
+            setServiceName('')
+            setIsDone(true)
+            showNote('Service added successfully.')
+        }
     }
     return(
         <div className="add-service">
@@ -41,9 +89,10 @@ export default function AddService(){
                 <form onSubmit={(e)=>{e.preventDefault(); handleAdditionOfServices()}}>
                     <h2>Add a new service</h2>
                     {/* NOTE HERE /// */}
-                    {note ? <span className='note'>{note}</span> : ''}
-                 
-
+                    {note ? 
+                    
+                    <span style={isDone ? isDoneClass : isNoteDone}>{note}</span> : ''}
+               
                   <div className="input-group">
                     <label htmlFor="">Select category:</label>
                      <select className='cat'
