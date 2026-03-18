@@ -4,7 +4,7 @@ import search from '../images/search.svg'
 const tabs = [
   { name: "Home", path: "/" },
   { name: "Explore", path: "/explore" },
-   {name: 'Near Me 📍', path: "/near"},
+   {name: 'Near Me', path: "/near"},
   { name: "Request", path: "/request" },
    { name: "Add Service", path: "/add" },
 ]
