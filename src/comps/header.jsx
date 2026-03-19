@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 import search from '../images/search.svg'
+import { useNavigate } from "react-router-dom"
 
 const tabs = [
   { name: "Home", path: "/" },
@@ -7,14 +8,18 @@ const tabs = [
    {name: 'Near Me', path: "/near"},
   { name: "Request", path: "/request" },
    { name: "Add Service", path: "/add" },
+   {name: 'API', path: '/api'}
 ]
 
+
+
 export default function Header(){
+  const navigate = useNavigate()
   return(
     <header>
       <div className="line"></div>
 
-      <h1>Ka<span>Plug</span>🔌</h1>
+      <h1 onClick={()=>navigate('/')}>Ka<span>Plug</span>🔌</h1>
 
       <div className="tabs">
         {tabs.map((tab) => (

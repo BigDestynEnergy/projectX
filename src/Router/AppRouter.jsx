@@ -5,6 +5,7 @@ import Explore from "../pages/Explore"
 import AddService from "../pages/Add Service"
 import Request from '../pages/Request'
 import NearMe from '../pages/Near'
+import API from '../pages/API'
 import { useEffect, useState } from "react"
 
 
@@ -32,6 +33,7 @@ export default function AppRouter(){
           setServices={setServices}/>}/>
           <Route path="/request" element={<Request/>} />
           <Route path="/near" element={<NearMe/>}/>
+          <Route path="/api" element={<API/>} />
         </Route>
 
       </Routes>
